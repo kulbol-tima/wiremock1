@@ -1,0 +1,36 @@
+{
+  "priority": 1,
+  "request": {
+    "method": "GET",
+    "urlPath": "/api/internal/v1/get-address-fact",
+    "queryParameters": {
+      "pin": {
+        "equalTo": "55555555555555"
+      }
+    }
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "application/json; charset=UTF-8"
+    },
+    "jsonBody": {
+      "pin": "{{request.query.pin}}",
+      "personAddress": false,
+      "status": "Not Found",
+      "region": "",
+      "regionId": "",
+      "district": "",
+      "districtId": "",
+      "city": "",
+      "cityId": 0,
+      "street": "",
+      "streetId": 0,
+      "house": "",
+      "flat": ""
+    },
+    "transformers": [
+      "response-template"
+    ]
+  }
+}
