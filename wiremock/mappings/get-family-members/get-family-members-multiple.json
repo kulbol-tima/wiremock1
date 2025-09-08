@@ -1,0 +1,32 @@
+{
+  "priority": 1,
+  "request": {
+    "method": "GET",
+    "urlPath": "/api/internal/v1/get-family-members",
+    "queryParameters": {
+      "pin": {
+        "equalTo": "22222222222222"
+      }
+    }
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "application/json; charset=UTF-8"
+    },
+    "jsonBody": {
+      "code": "OK",
+      "message": "Успешно",
+      "members": [
+        {
+          "name": "Петров Петр Петрович",
+          "role": "Глава семьи"
+        },
+        {
+          "name": "Петрова Анна Ивановна",
+          "role": "Супруга"
+        }
+      ]
+    }
+  }
+}
