@@ -1,0 +1,51 @@
+{
+  "priority": 1,
+  "request": {
+    "method": "GET",
+    "urlPath": "/api/internal/v1/search-pin-all",
+    "queryParameters": {
+      "pin": {
+        "equalTo": "22222222222221"
+      }
+    }
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "application/json; charset=UTF-8",
+      "X-Stub": "wiremock"
+    },
+    "jsonBody": [
+      {
+        "Propcode": "0000000000001",
+        "Address": "обл. Нарын, р-н Жумгальский, а/а Куйручук-Кызарт, с. Жаны-Арык, уч. Балтабай усту.",
+        "Owner": "Иванов Иван",
+        "Pin": "{{request.query.pin}}",
+        "DocNum": "id1234567",
+        "REG_DATE": "2008-02-15",
+        "TERM_DATE": ""
+      },
+      {
+        "Propcode": "0000000000002",
+        "Address": "обл. Нарын, р-н Жумгальский, а/а Куйручук-Кызарт, с. Жаны-Арык, уч. Балтабай усту.",
+        "Owner": "Иванов Иван",
+        "Pin": "{{request.query.pin}}",
+        "DocNum": "id1234567",
+        "REG_DATE": "2008-02-15",
+        "TERM_DATE": ""
+      },
+      {
+        "Propcode": "0000000000003",
+        "Address": "обл. Нарын, р-н Жумгальский, а/а Куйручук-Кызарт, с. Жаны-Арык, уч. Балтабай усту.",
+        "Owner": "Иванов Иван",
+        "Pin": "{{request.query.pin}}",
+        "DocNum": "id1234567",
+        "REG_DATE": "2008-02-15",
+        "TERM_DATE": ""
+      }
+    ],
+    "transformers": [
+      "response-template"
+    ]
+  }
+}
