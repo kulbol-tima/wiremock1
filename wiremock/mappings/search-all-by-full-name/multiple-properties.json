@@ -1,0 +1,41 @@
+{
+  "priority": 1,
+  "request": {
+    "method": "GET",
+    "urlPath": "/api/internal/v1/search-all-by-full-name",
+    "queryParameters": {
+      "surname": {
+        "equalTo": "Петров"
+      },
+      "firstname": {
+        "equalTo": "Петр"
+      }
+    }
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "application/json; charset=UTF-8"
+    },
+    "jsonBody": [
+      {
+        "Propcode": "6-02-01-0002-0111",
+        "Address": "г. Жалал-Абад, ул. Токтогула, 15",
+        "Owner": "Петров Петр",
+        "Pin": "10202198005678",
+        "DocNum": "JA-123123",
+        "REG_DATE": "2010-06-12",
+        "TERM_DATE": ""
+      },
+      {
+        "Propcode": "6-02-01-0002-0112",
+        "Address": "г. Жалал-Абад, ул. Ленина, 30",
+        "Owner": "Петров Петр",
+        "Pin": "10202198005678",
+        "DocNum": "JA-456456",
+        "REG_DATE": "2015-08-01",
+        "TERM_DATE": ""
+      }
+    ]
+  }
+}
