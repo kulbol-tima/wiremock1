@@ -1,0 +1,47 @@
+{
+  "priority": 1,
+  "request": {
+    "method": "GET",
+    "urlPath": "/api/internal/v1/get-work-period-info",
+    "queryParameters": {
+      "pin": {
+        "equalTo": "22222222222222"
+      }
+    }
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "application/json; charset=UTF-8"
+    },
+    "jsonBody": {
+      "status": "OK",
+      "pin": "{{request.query.pin}}",
+      "firstName": "Петр",
+      "lastName": "Петров",
+      "patronymic": "Петрович",
+      "issueDate": "{{now}}",
+      "workPeriods": [
+        {
+          "pin_ass": "23456789012345",
+          "payer": "ЗАО 'Вектор'",
+          "inn": "020219805678",
+          "so_sf": "СФ",
+          "dateBegin": "2020-03-10",
+          "dateEnd": "2021-05-20"
+        },
+        {
+          "pin_ass": "34567890123456",
+          "payer": "ИП 'Петров П.П.'",
+          "inn": "22222222222222",
+          "so_sf": "СФ",
+          "dateBegin": "2021-06-01",
+          "dateEnd": null
+        }
+      ]
+    },
+    "transformers": [
+      "response-template"
+    ]
+  }
+}

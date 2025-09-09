@@ -2,10 +2,10 @@
   "priority": 1,
   "request": {
     "method": "GET",
-    "urlPath": "/api/internal/v1/get-address-fact",
+    "urlPath": "/api/internal/v1/get-work-period-info",
     "queryParameters": {
       "pin": {
-        "equalTo": "55555555555555"
+        "equalTo": "33333333333333"
       }
     }
   },
@@ -15,19 +15,13 @@
       "Content-Type": "application/json; charset=UTF-8"
     },
     "jsonBody": {
+      "status": "OK",
       "pin": "{{request.query.pin}}",
-      "personAddress": false,
-      "status": "Not Found",
-      "region": "",
-      "regionId": "",
-      "district": "",
-      "districtId": "",
-      "city": "",
-      "cityId": 0,
-      "street": "",
-      "streetId": 0,
-      "house": "",
-      "flat": ""
+      "firstName": "Сидор",
+      "lastName": "Сидоров",
+      "patronymic": "Сидорович",
+      "issueDate": "{{now}}",
+      "workPeriods": []
     },
     "transformers": [
       "response-template"

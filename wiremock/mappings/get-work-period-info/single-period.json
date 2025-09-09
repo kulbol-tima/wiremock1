@@ -1,0 +1,39 @@
+{
+  "priority": 1,
+  "request": {
+    "method": "GET",
+    "urlPath": "/api/internal/v1/get-work-period-info",
+    "queryParameters": {
+      "pin": {
+        "equalTo": "11111111111111"
+      }
+    }
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "application/json; charset=UTF-8"
+    },
+    "jsonBody": {
+      "status": "OK",
+      "pin": "{{request.query.pin}}",
+      "firstName": "Иван",
+      "lastName": "Иванов",
+      "patronymic": "Иванович",
+      "issueDate": "{{now}}",
+      "workPeriods": [
+        {
+          "pin_ass": "12345678901234",
+          "payer": "ОсОО 'Рога и Копыта'",
+          "inn": "010119901234",
+          "so_sf": "СФ",
+          "dateBegin": "2022-01-01",
+          "dateEnd": "2022-12-31"
+        }
+      ]
+    },
+    "transformers": [
+      "response-template"
+    ]
+  }
+}
