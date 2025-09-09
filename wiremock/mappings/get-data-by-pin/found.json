@@ -1,0 +1,40 @@
+{
+  "priority": 1,
+  "request": {
+    "method": "GET",
+    "urlPath": "/api/internal/v1/get-data-by-pin",
+    "queryParameters": {
+      "pin": {
+        "equalTo": "11111111111111"
+      }
+    }
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "application/json; charset=UTF-8"
+    },
+    "jsonBody": {
+      "pin": "{{request.query.pin}}",
+      "name": "Иван",
+      "surname": "Иванов",
+      "patronymic": "Иванович",
+      "gender": "Мужской",
+      "maritalStatusId": 2,
+      "maritalStatus": "Женат/Замужем",
+      "nationalityId": 1,
+      "nationality": "Кыргыз",
+      "citizenshipId": 1,
+      "citizenship": "Кыргызская Республика",
+      "pinBlocked": false,
+      "pinGenerationDate": "1990-01-01",
+      "photo": "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=",
+      "deathDate": null,
+      "faultCode": 0,
+      "faultString": "OK"
+    },
+    "transformers": [
+      "response-template"
+    ]
+  }
+}
