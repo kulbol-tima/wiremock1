@@ -1,0 +1,21 @@
+[
+  {
+    "date": "2023-10-27",
+    "state": "Активна",
+    "firstName": "Иван",
+    "patronymic": "Иванович",
+    "lastName": "Иванов",
+    "pensionerInfo": {
+      "num": "123456",
+      "numDossier": "D789012",
+      "pinRecipient": "12345678901234",
+      "pinBreadwinner": null,
+      "dateTo": "2023-10-27",
+      "dateFrom": "2010-05-20",
+      "kindPension": "Пенсия по возрасту",
+      "categoryPension": "По возрасту",
+      "sum": "15000.00",
+      "PIN2": "43210987654321"
+    }
+  }
+]
