@@ -1,0 +1,32 @@
+{
+  "addressArray": [
+    {
+      "countryId": "KG",
+      "regionId": "01",
+      "districtId": "02",
+      "cityId": "03",
+      "villageId": "04",
+      "streetId": "05",
+      "houseTxt": "123",
+      "flatTxt": "45",
+      "code": "720000",
+      "post": "Главпочтамт"
+    },
+    {
+      "countryId": "KG",
+      "regionId": "02",
+      "districtId": "03",
+      "cityId": "04",
+      "villageId": "05",
+      "streetId": "06",
+      "houseTxt": "456",
+      "flatTxt": "78",
+      "code": "720001",
+      "post": "Филиал 1"
+    }
+  ],
+  "error": "false",
+  "address": "г. Бишкек, ул. Киевская, д. 123, кв. 45; г. Ош, ул. Ленина, д. 456, кв. 78",
+  "pension": "false",
+  "dateCreated": "2023-10-27T10:00:00Z"
+}
