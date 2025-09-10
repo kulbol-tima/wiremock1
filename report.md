@@ -1,12 +1,24 @@
+# Отчет о моковых данных
+
+Этот документ содержит описание всех мок-сценариев, доступных в сервисе.
+
 | № | Сценарий | Условие (входные данные) | Код ответа (HTTP) | Пример ответа (Response body) | Примечания |
 |---|---|---|---|---|---|
-| 1 | gns/tp-business-activity-by-pin/bad-request | Query param 'pin' absent 'True' | 400 | ```json
+| 1 | ГНС / tp-business-activity-by-pin / bad-request | **Метод:** `GET`
+**URL:** `/api/internal/v1/tp-business-activity-by-pin`
+
+**Параметры запроса:**
+- Параметр 'pin' отсутствует 'True' | 400 | ```json
 {
   "code": "BAD_REQUEST",
   "message": "Параметр 'pin' является обязательным"
 }
-``` | Проверка валидации входных параметров |
-| 2 | gns/tp-business-activity-by-pin/found | Query param 'pin' equalTo '11111111111111' | 200 | ```json
+``` | Проверка валидации входных параметров (ошибка на стороне клиента). |
+| 2 | ГНС / tp-business-activity-by-pin / found | **Метод:** `GET`
+**URL:** `/api/internal/v1/tp-business-activity-by-pin`
+
+**Параметры запроса:**
+- Параметр 'pin' равен '11111111111111' | 200 | ```json
 {
   "Farm": "Крестьянское хозяйство 'Агро'",
   "FullName": "Иванов Иван Иванович",
@@ -16,8 +28,12 @@
   "TaxTypeCode": "1020",
   "TIN": "{{request.query.pin}}"
 }
-``` | Happy-path сценарий, полный корректный ответ |
-| 3 | gns/tp-business-activity-by-pin/not-found | Query param 'pin' equalTo '22222222222222' | 200 | ```json
+``` | Успешный сценарий (happy path), данные найдены и возвращены. |
+| 3 | ГНС / tp-business-activity-by-pin / not-found | **Метод:** `GET`
+**URL:** `/api/internal/v1/tp-business-activity-by-pin`
+
+**Параметры запроса:**
+- Параметр 'pin' равен '22222222222222' | 200 | ```json
 {
   "Farm": null,
   "FullName": null,
@@ -27,20 +43,30 @@
   "TaxTypeCode": null,
   "TIN": "{{request.query.pin}}"
 }
-``` | Ответ соответствует бизнес-ошибке (данных нет) |
-| 4 | gns/tp-business-activity-by-pin/service-unavailable | Любой запрос | 503 | ```json
+``` | Сценарий, когда данные не найдены (бизнес-ошибка). |
+| 4 | ГНС / tp-business-activity-by-pin / service-unavailable | **Метод:** `GET`
+**URL:** `/api/internal/v1/tp-business-activity-by-pin` | 503 | ```json
 {
   "code": "SERVICE_UNAVAILABLE",
   "message": "Сервис временно недоступен"
 }
-``` | Проверка обработки недоступности внешнего сервиса |
-| 5 | kadastr/search-all-by-full-name/bad-request | Query param 'firstname' absent 'True' | 400 | ```json
+``` | Проверка обработки недоступности или внутренней ошибки внешнего сервиса. |
+| 5 | Кадастр / search-all-by-full-name / bad-request | **Метод:** `GET`
+**URL:** `/api/internal/v1/search-all-by-full-name`
+
+**Параметры запроса:**
+- Параметр 'firstname' отсутствует 'True' | 400 | ```json
 {
   "code": "BAD_REQUEST",
   "message": "Параметр 'firstname' является обязательным"
 }
-``` | Проверка валидации входных параметров |
-| 6 | kadastr/search-all-by-full-name/multiple-properties | Query param 'surname' equalTo 'Петров', Query param 'firstname' equalTo 'Петр' | 200 | ```json
+``` | Проверка валидации входных параметров (ошибка на стороне клиента). |
+| 6 | Кадастр / search-all-by-full-name / multiple-properties | **Метод:** `GET`
+**URL:** `/api/internal/v1/search-all-by-full-name`
+
+**Параметры запроса:**
+- Параметр 'surname' равен 'Петров'
+- Параметр 'firstname' равен 'Петр' | 200 | ```json
 [
   {
     "Propcode": "6-02-01-0002-0111",
@@ -61,17 +87,28 @@
     "TERM_DATE": ""
   }
 ]
-``` | Happy-path сценарий, полный корректный ответ |
-| 7 | kadastr/search-all-by-full-name/no-properties | Query param 'surname' equalTo 'Сидоров', Query param 'firstname' equalTo 'Сидор' | 200 | ```json
+``` | Успешный сценарий (happy path), данные найдены и возвращены. |
+| 7 | Кадастр / search-all-by-full-name / no-properties | **Метод:** `GET`
+**URL:** `/api/internal/v1/search-all-by-full-name`
+
+**Параметры запроса:**
+- Параметр 'surname' равен 'Сидоров'
+- Параметр 'firstname' равен 'Сидор' | 200 | ```json
 []
-``` | N/A |
-| 8 | kadastr/search-all-by-full-name/service-unavailable | Любой запрос | 503 | ```json
+``` | Стандартный сценарий работы. |
+| 8 | Кадастр / search-all-by-full-name / service-unavailable | **Метод:** `GET`
+**URL:** `/api/internal/v1/search-all-by-full-name` | 503 | ```json
 {
   "code": "SERVICE_UNAVAILABLE",
   "message": "Сервис временно недоступен"
 }
-``` | Проверка обработки недоступности внешнего сервиса |
-| 9 | kadastr/search-all-by-full-name/single-property | Query param 'surname' equalTo 'Иванов', Query param 'firstname' equalTo 'Иван' | 200 | ```json
+``` | Проверка обработки недоступности или внутренней ошибки внешнего сервиса. |
+| 9 | Кадастр / search-all-by-full-name / single-property | **Метод:** `GET`
+**URL:** `/api/internal/v1/search-all-by-full-name`
+
+**Параметры запроса:**
+- Параметр 'surname' равен 'Иванов'
+- Параметр 'firstname' равен 'Иван' | 200 | ```json
 [
   {
     "Propcode": "5-01-01-0001-0555",
@@ -83,14 +120,22 @@
     "TERM_DATE": ""
   }
 ]
-``` | Happy-path сценарий, полный корректный ответ |
-| 10 | kadastr/search-all-by-prop-code/bad-request | Query param 'propCode' absent 'True' | 400 | ```json
+``` | Успешный сценарий (happy path), данные найдены и возвращены. |
+| 10 | Кадастр / search-all-by-prop-code / bad-request | **Метод:** `GET`
+**URL:** `/api/internal/v1/search-all-by-prop-code`
+
+**Параметры запроса:**
+- Параметр 'propCode' отсутствует 'True' | 400 | ```json
 {
   "code": "BAD_REQUEST",
   "message": "Параметр 'propCode' является обязательным"
 }
-``` | Проверка валидации входных параметров |
-| 11 | kadastr/search-all-by-prop-code/property-found | Query param 'propCode' equalTo 'PROP123' | 200 | ```json
+``` | Проверка валидации входных параметров (ошибка на стороне клиента). |
+| 11 | Кадастр / search-all-by-prop-code / property-found | **Метод:** `GET`
+**URL:** `/api/internal/v1/search-all-by-prop-code`
+
+**Параметры запроса:**
+- Параметр 'propCode' равен 'PROP123' | 200 | ```json
 {
   "materialsten": "Кирпич",
   "ploshad_stroenia": "120.5",
@@ -101,8 +146,12 @@
   "document_prava": "Договор купли-продажи",
   "formaIspolzovania": "Индивидуальное жилищное строительство"
 }
-``` | Happy-path сценарий, полный корректный ответ |
-| 12 | kadastr/search-all-by-prop-code/property-not-found | Query param 'propCode' equalTo 'PROP999' | 200 | ```json
+``` | Успешный сценарий (happy path), данные найдены и возвращены. |
+| 12 | Кадастр / search-all-by-prop-code / property-not-found | **Метод:** `GET`
+**URL:** `/api/internal/v1/search-all-by-prop-code`
+
+**Параметры запроса:**
+- Параметр 'propCode' равен 'PROP999' | 200 | ```json
 {
   "materialsten": null,
   "ploshad_stroenia": null,
@@ -113,20 +162,29 @@
   "document_prava": null,
   "formaIspolzovania": null
 }
-``` | Ответ соответствует бизнес-ошибке (данных нет) |
-| 13 | kadastr/search-all-by-prop-code/service-unavailable | Любой запрос | 503 | ```json
+``` | Сценарий, когда данные не найдены (бизнес-ошибка). |
+| 13 | Кадастр / search-all-by-prop-code / service-unavailable | **Метод:** `GET`
+**URL:** `/api/internal/v1/search-all-by-prop-code` | 503 | ```json
 {
   "code": "SERVICE_UNAVAILABLE",
   "message": "Сервис временно недоступен"
 }
-``` | Проверка обработки недоступности внешнего сервиса |
-| 14 | kadastr/search-pin-all/bad-request | Query param 'pin' absent 'True' | 400 | ```json
+``` | Проверка обработки недоступности или внутренней ошибки внешнего сервиса. |
+| 14 | Кадастр / search-pin-all / bad-request | **Метод:** `GET`
+**URL:** `/api/internal/v1/search-pin-all`
+
+**Параметры запроса:**
+- Параметр 'pin' отсутствует 'True' | 400 | ```json
 {
   "code": "BAD_REQUEST",
   "message": "Параметр 'pin' является обязательным"
 }
-``` | Проверка валидации входных параметров |
-| 15 | kadastr/search-pin-all/multiple-properties | Query param 'pin' equalTo '99999999999999' | 200 | ```json
+``` | Проверка валидации входных параметров (ошибка на стороне клиента). |
+| 15 | Кадастр / search-pin-all / multiple-properties | **Метод:** `GET`
+**URL:** `/api/internal/v1/search-pin-all`
+
+**Параметры запроса:**
+- Параметр 'pin' равен '99999999999999' | 200 | ```json
 [
   {
     "Propcode": "1-02-03-0004-0056",
@@ -147,17 +205,26 @@
     "TERM_DATE": ""
   }
 ]
-``` | Happy-path сценарий, полный корректный ответ |
-| 16 | kadastr/search-pin-all/no-properties | Query param 'pin' equalTo '00000000000000' | 200 | ```json
+``` | Успешный сценарий (happy path), данные найдены и возвращены. |
+| 16 | Кадастр / search-pin-all / no-properties | **Метод:** `GET`
+**URL:** `/api/internal/v1/search-pin-all`
+
+**Параметры запроса:**
+- Параметр 'pin' равен '00000000000000' | 200 | ```json
 []
-``` | N/A |
-| 17 | kadastr/search-pin-all/service-unavailable | Любой запрос | 503 | ```json
+``` | Стандартный сценарий работы. |
+| 17 | Кадастр / search-pin-all / service-unavailable | **Метод:** `GET`
+**URL:** `/api/internal/v1/search-pin-all` | 503 | ```json
 {
   "code": "SERVICE_UNAVAILABLE",
   "message": "Сервис временно недоступен"
 }
-``` | Проверка обработки недоступности внешнего сервиса |
-| 18 | kadastr/search-pin-all/single-property | Query param 'pin' equalTo '88888888888888' | 200 | ```json
+``` | Проверка обработки недоступности или внутренней ошибки внешнего сервиса. |
+| 18 | Кадастр / search-pin-all / single-property | **Метод:** `GET`
+**URL:** `/api/internal/v1/search-pin-all`
+
+**Параметры запроса:**
+- Параметр 'pin' равен '88888888888888' | 200 | ```json
 [
   {
     "Propcode": "4-01-01-0001-0123",
@@ -169,14 +236,24 @@
     "TERM_DATE": ""
   }
 ]
-``` | Happy-path сценарий, полный корректный ответ |
-| 19 | passport/passport-data-by-psn/bad-request | Query param 'series' absent 'True' | 400 | ```json
+``` | Успешный сценарий (happy path), данные найдены и возвращены. |
+| 19 | Паспорт / passport-data-by-psn / bad-request | **Метод:** `GET`
+**URL:** `/api/internal/v1/passport-data-by-psn`
+
+**Параметры запроса:**
+- Параметр 'series' отсутствует 'True' | 400 | ```json
 {
   "code": "BAD_REQUEST",
   "message": "Параметр 'series' является обязательным"
 }
-``` | Проверка валидации входных параметров |
-| 20 | passport/passport-data-by-psn/passport-found | Query param 'pin' equalTo '66666666666666', Query param 'series' equalTo 'AN', Query param 'number' equalTo '123456' | 200 | ```json
+``` | Проверка валидации входных параметров (ошибка на стороне клиента). |
+| 20 | Паспорт / passport-data-by-psn / passport-found | **Метод:** `GET`
+**URL:** `/api/internal/v1/passport-data-by-psn`
+
+**Параметры запроса:**
+- Параметр 'pin' равен '66666666666666'
+- Параметр 'series' равен 'AN'
+- Параметр 'number' равен '123456' | 200 | ```json
 {
   "pin": "{{request.query.pin}}",
   "surname": "Асанов",
@@ -201,8 +278,14 @@
   "streetId": 123,
   "houseId": 456
 }
-``` | Happy-path сценарий, полный корректный ответ |
-| 21 | passport/passport-data-by-psn/passport-not-found | Query param 'pin' equalTo '77777777777777', Query param 'series' equalTo 'ID', Query param 'number' equalTo '654321' | 200 | ```json
+``` | Успешный сценарий (happy path), данные найдены и возвращены. |
+| 21 | Паспорт / passport-data-by-psn / passport-not-found | **Метод:** `GET`
+**URL:** `/api/internal/v1/passport-data-by-psn`
+
+**Параметры запроса:**
+- Параметр 'pin' равен '77777777777777'
+- Параметр 'series' равен 'ID'
+- Параметр 'number' равен '654321' | 200 | ```json
 {
   "pin": "{{request.query.pin}}",
   "surname": null,
@@ -227,20 +310,29 @@
   "streetId": null,
   "houseId": null
 }
-``` | Ответ соответствует бизнес-ошибке (данных нет) |
-| 22 | passport/passport-data-by-psn/service-unavailable | Любой запрос | 503 | ```json
+``` | Сценарий, когда данные не найдены (бизнес-ошибка). |
+| 22 | Паспорт / passport-data-by-psn / service-unavailable | **Метод:** `GET`
+**URL:** `/api/internal/v1/passport-data-by-psn` | 503 | ```json
 {
   "code": "SERVICE_UNAVAILABLE",
   "message": "Сервис временно недоступен"
 }
-``` | Проверка обработки недоступности внешнего сервиса |
-| 23 | patent-polis/get-patents-by-pin/bad-request | Query param 'dateCurrent' absent 'True' | 400 | ```json
+``` | Проверка обработки недоступности или внутренней ошибки внешнего сервиса. |
+| 23 | Патент/Полис / get-patents-by-pin / bad-request | **Метод:** `GET`
+**URL:** `/api/internal/v1/get-patents-by-pin`
+
+**Параметры запроса:**
+- Параметр 'dateCurrent' отсутствует 'True' | 400 | ```json
 {
   "code": "BAD_REQUEST",
   "message": "Параметр 'dateCurrent' является обязательным"
 }
-``` | Проверка валидации входных параметров |
-| 24 | patent-polis/get-patents-by-pin/multiple-documents | Query param 'pin' equalTo '22222222222222' | 200 | ```json
+``` | Проверка валидации входных параметров (ошибка на стороне клиента). |
+| 24 | Патент/Полис / get-patents-by-pin / multiple-documents | **Метод:** `GET`
+**URL:** `/api/internal/v1/get-patents-by-pin`
+
+**Параметры запроса:**
+- Параметр 'pin' равен '22222222222222' | 200 | ```json
 [
   {
     "id": 201,
@@ -263,17 +355,26 @@
     "tin": "{{request.query.pin}}"
   }
 ]
-``` | Happy-path сценарий, полный корректный ответ |
-| 25 | patent-polis/get-patents-by-pin/no-documents | Query param 'pin' equalTo '33333333333333' | 200 | ```json
+``` | Успешный сценарий (happy path), данные найдены и возвращены. |
+| 25 | Патент/Полис / get-patents-by-pin / no-documents | **Метод:** `GET`
+**URL:** `/api/internal/v1/get-patents-by-pin`
+
+**Параметры запроса:**
+- Параметр 'pin' равен '33333333333333' | 200 | ```json
 []
-``` | N/A |
-| 26 | patent-polis/get-patents-by-pin/service-unavailable | Любой запрос | 503 | ```json
+``` | Стандартный сценарий работы. |
+| 26 | Патент/Полис / get-patents-by-pin / service-unavailable | **Метод:** `GET`
+**URL:** `/api/internal/v1/get-patents-by-pin` | 503 | ```json
 {
   "code": "SERVICE_UNAVAILABLE",
   "message": "Сервис временно недоступен"
 }
-``` | Проверка обработки недоступности внешнего сервиса |
-| 27 | patent-polis/get-patents-by-pin/single-patent | Query param 'pin' equalTo '11111111111111' | 200 | ```json
+``` | Проверка обработки недоступности или внутренней ошибки внешнего сервиса. |
+| 27 | Патент/Полис / get-patents-by-pin / single-patent | **Метод:** `GET`
+**URL:** `/api/internal/v1/get-patents-by-pin`
+
+**Параметры запроса:**
+- Параметр 'pin' равен '11111111111111' | 200 | ```json
 [
   {
     "id": 101,
@@ -288,8 +389,12 @@
     "isArendaAmount": false
   }
 ]
-``` | N/A |
-| 28 | sanarip-aymak/get-address-fact/address-found | Query param 'pin' equalTo '44444444444444' | 200 | ```json
+``` | Успешный сценарий (happy path), данные найдены и возвращены. |
+| 28 | Санарип Аймак / get-address-fact / address-found | **Метод:** `GET`
+**URL:** `/api/internal/v1/get-address-fact`
+
+**Параметры запроса:**
+- Параметр 'pin' равен '44444444444444' | 200 | ```json
 {
   "pin": "{{request.query.pin}}",
   "personAddress": true,
@@ -305,8 +410,12 @@
   "house": "101/1",
   "flat": "25"
 }
-``` | Happy-path сценарий, полный корректный ответ |
-| 29 | sanarip-aymak/get-address-fact/address-not-found | Query param 'pin' equalTo '55555555555555' | 200 | ```json
+``` | Успешный сценарий (happy path), данные найдены и возвращены. |
+| 29 | Санарип Аймак / get-address-fact / address-not-found | **Метод:** `GET`
+**URL:** `/api/internal/v1/get-address-fact`
+
+**Параметры запроса:**
+- Параметр 'pin' равен '55555555555555' | 200 | ```json
 {
   "pin": "{{request.query.pin}}",
   "personAddress": false,
@@ -322,33 +431,50 @@
   "house": "",
   "flat": ""
 }
-``` | Ответ соответствует бизнес-ошибке (данных нет) |
-| 30 | sanarip-aymak/get-address-fact/bad-request | Query param 'pin' absent 'True' | 400 | ```json
+``` | Сценарий, когда данные не найдены (бизнес-ошибка). |
+| 30 | Санарип Аймак / get-address-fact / bad-request | **Метод:** `GET`
+**URL:** `/api/internal/v1/get-address-fact`
+
+**Параметры запроса:**
+- Параметр 'pin' отсутствует 'True' | 400 | ```json
 {
   "code": "BAD_REQUEST",
   "message": "Параметр 'pin' является обязательным"
 }
-``` | Проверка валидации входных параметров |
-| 31 | sanarip-aymak/get-address-fact/service-unavailable | Любой запрос | 503 | ```json
+``` | Проверка валидации входных параметров (ошибка на стороне клиента). |
+| 31 | Санарип Аймак / get-address-fact / service-unavailable | **Метод:** `GET`
+**URL:** `/api/internal/v1/get-address-fact` | 503 | ```json
 {
   "code": "SERVICE_UNAVAILABLE",
   "message": "Сервис временно недоступен"
 }
-``` | Проверка обработки недоступности внешнего сервиса |
-| 32 | sanarip-aymak/get-family-members/bad-request | Query param 'pin' absent 'True' | 400 | ```json
+``` | Проверка обработки недоступности или внутренней ошибки внешнего сервиса. |
+| 32 | Санарип Аймак / get-family-members / bad-request | **Метод:** `GET`
+**URL:** `/api/internal/v1/get-family-members`
+
+**Параметры запроса:**
+- Параметр 'pin' отсутствует 'True' | 400 | ```json
 {
   "code": "BAD_REQUEST",
   "message": "Параметр 'pin' является обязательным"
 }
-``` | Проверка валидации входных параметров |
-| 33 | sanarip-aymak/get-family-members/get-family-members-empty | Query param 'pin' equalTo '33333333333333' | 200 | ```json
+``` | Проверка валидации входных параметров (ошибка на стороне клиента). |
+| 33 | Санарип Аймак / get-family-members / get-family-members-empty | **Метод:** `GET`
+**URL:** `/api/internal/v1/get-family-members`
+
+**Параметры запроса:**
+- Параметр 'pin' равен '33333333333333' | 200 | ```json
 {
   "code": "OK",
   "message": "Успешно",
   "members": []
 }
-``` | N/A |
-| 34 | sanarip-aymak/get-family-members/get-family-members-multiple | Query param 'pin' equalTo '22222222222222' | 200 | ```json
+``` | Сценарий, когда данные не найдены (бизнес-ошибка). |
+| 34 | Санарип Аймак / get-family-members / get-family-members-multiple | **Метод:** `GET`
+**URL:** `/api/internal/v1/get-family-members`
+
+**Параметры запроса:**
+- Параметр 'pin' равен '22222222222222' | 200 | ```json
 {
   "code": "OK",
   "message": "Успешно",
@@ -363,8 +489,12 @@
     }
   ]
 }
-``` | N/A |
-| 35 | sanarip-aymak/get-family-members/get-family-members-single | Query param 'pin' equalTo '11111111111111' | 200 | ```json
+``` | Успешный сценарий (happy path), данные найдены и возвращены. |
+| 35 | Санарип Аймак / get-family-members / get-family-members-single | **Метод:** `GET`
+**URL:** `/api/internal/v1/get-family-members`
+
+**Параметры запроса:**
+- Параметр 'pin' равен '11111111111111' | 200 | ```json
 {
   "code": "OK",
   "message": "Успешно",
@@ -375,20 +505,29 @@
     }
   ]
 }
-``` | N/A |
-| 36 | sanarip-aymak/get-family-members/service-unavailable | Любой запрос | 503 | ```json
+``` | Успешный сценарий (happy path), данные найдены и возвращены. |
+| 36 | Санарип Аймак / get-family-members / service-unavailable | **Метод:** `GET`
+**URL:** `/api/internal/v1/get-family-members` | 503 | ```json
 {
   "code": "SERVICE_UNAVAILABLE",
   "message": "Сервис временно недоступен"
 }
-``` | Проверка обработки недоступности внешнего сервиса |
-| 37 | zags/get-data-by-pin/bad-request | Query param 'pin' absent 'True' | 400 | ```json
+``` | Проверка обработки недоступности или внутренней ошибки внешнего сервиса. |
+| 37 | ЗАГС / get-data-by-pin / bad-request | **Метод:** `GET`
+**URL:** `/api/internal/v1/get-data-by-pin`
+
+**Параметры запроса:**
+- Параметр 'pin' отсутствует 'True' | 400 | ```json
 {
   "faultCode": 400,
   "faultString": "Параметр 'pin' является обязательным"
 }
-``` | Проверка валидации входных параметров |
-| 38 | zags/get-data-by-pin/found | Query param 'pin' equalTo '11111111111111' | 200 | ```json
+``` | Проверка валидации входных параметров (ошибка на стороне клиента). |
+| 38 | ЗАГС / get-data-by-pin / found | **Метод:** `GET`
+**URL:** `/api/internal/v1/get-data-by-pin`
+
+**Параметры запроса:**
+- Параметр 'pin' равен '11111111111111' | 200 | ```json
 {
   "pin": "{{request.query.pin}}",
   "name": "Иван",
@@ -408,8 +547,12 @@
   "faultCode": 0,
   "faultString": "OK"
 }
-``` | Happy-path сценарий, полный корректный ответ |
-| 39 | zags/get-data-by-pin/not-found-error | Query param 'pin' equalTo '22222222222222' | 200 | ```json
+``` | Успешный сценарий (happy path), данные найдены и возвращены. |
+| 39 | ЗАГС / get-data-by-pin / not-found-error | **Метод:** `GET`
+**URL:** `/api/internal/v1/get-data-by-pin`
+
+**Параметры запроса:**
+- Параметр 'pin' равен '22222222222222' | 200 | ```json
 {
   "pin": "{{request.query.pin}}",
   "name": null,
@@ -429,20 +572,29 @@
   "faultCode": 1,
   "faultString": "Данные не найдены"
 }
-``` | Ответ соответствует бизнес-ошибке (данных нет) |
-| 40 | zags/get-data-by-pin/service-unavailable | Любой запрос | 503 | ```json
+``` | Сценарий, когда данные не найдены (бизнес-ошибка). |
+| 40 | ЗАГС / get-data-by-pin / service-unavailable | **Метод:** `GET`
+**URL:** `/api/internal/v1/get-data-by-pin` | 503 | ```json
 {
   "faultCode": 503,
   "faultString": "Сервис временно недоступен"
 }
-``` | Проверка обработки недоступности внешнего сервиса |
-| 41 | zags/get-death-act-data-by-pin/bad-request | Query param 'pin' absent 'True' | 400 | ```json
+``` | Проверка обработки недоступности или внутренней ошибки внешнего сервиса. |
+| 41 | ЗАГС / get-death-act-data-by-pin / bad-request | **Метод:** `GET`
+**URL:** `/api/internal/v1/get-death-act-data-by-pin`
+
+**Параметры запроса:**
+- Параметр 'pin' отсутствует 'True' | 400 | ```json
 {
   "code": "BAD_REQUEST",
   "message": "Параметр 'pin' является обязательным"
 }
-``` | Проверка валидации входных параметров |
-| 42 | zags/get-death-act-data-by-pin/found | Query param 'pin' equalTo '11111111111111' | 200 | ```json
+``` | Проверка валидации входных параметров (ошибка на стороне клиента). |
+| 42 | ЗАГС / get-death-act-data-by-pin / found | **Метод:** `GET`
+**URL:** `/api/internal/v1/get-death-act-data-by-pin`
+
+**Параметры запроса:**
+- Параметр 'pin' равен '11111111111111' | 200 | ```json
 {
   "actDate": "2023-10-26",
   "actNo": "12345",
@@ -458,8 +610,12 @@
   "deathDate": "2023-10-25",
   "deathTime": "14:30:00"
 }
-``` | Happy-path сценарий, полный корректный ответ |
-| 43 | zags/get-death-act-data-by-pin/not-found | Query param 'pin' equalTo '22222222222222' | 200 | ```json
+``` | Успешный сценарий (happy path), данные найдены и возвращены. |
+| 43 | ЗАГС / get-death-act-data-by-pin / not-found | **Метод:** `GET`
+**URL:** `/api/internal/v1/get-death-act-data-by-pin`
+
+**Параметры запроса:**
+- Параметр 'pin' равен '22222222222222' | 200 | ```json
 {
   "actDate": null,
   "actNo": null,
@@ -475,10 +631,11 @@
   "deathDate": null,
   "deathTime": null
 }
-``` | Ответ соответствует бизнес-ошибке (данных нет) |
-| 44 | zags/get-death-act-data-by-pin/service-unavailable | Любой запрос | 503 | ```json
+``` | Сценарий, когда данные не найдены (бизнес-ошибка). |
+| 44 | ЗАГС / get-death-act-data-by-pin / service-unavailable | **Метод:** `GET`
+**URL:** `/api/internal/v1/get-death-act-data-by-pin` | 503 | ```json
 {
   "code": "SERVICE_UNAVAILABLE",
   "message": "Сервис временно недоступен"
 }
-``` | Проверка обработки недоступности внешнего сервиса |
+``` | Проверка обработки недоступности или внутренней ошибки внешнего сервиса. |
