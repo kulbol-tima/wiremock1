@@ -1,0 +1,20 @@
+{
+  "addressArray": [
+    {
+      "countryId": "KG",
+      "regionId": "01",
+      "districtId": "02",
+      "cityId": "03",
+      "villageId": "04",
+      "streetId": "05",
+      "houseTxt": "123",
+      "flatTxt": "45",
+      "code": "720000",
+      "post": "Главпочтамт"
+    }
+  ],
+  "error": "false",
+  "address": "г. Бишкек, ул. Киевская, д. 123, кв. 45",
+  "pension": "false",
+  "dateCreated": "2023-10-27T10:00:00Z"
+}
