@@ -1,0 +1,10 @@
+{
+  "code": 400,
+  "message": "Bad Request",
+  "errors": [
+    {
+      "field": "pin",
+      "message": "The pin field is required."
+    }
+  ]
+}
