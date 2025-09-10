@@ -1,0 +1,42 @@
+[
+  {
+    "uuid": "a1b2c3d4-e5f6-7890-1234-567890abcdef",
+    "date": "2023-10-27",
+    "pin": "12345678901234",
+    "fio": "Иванов Иван Иванович",
+    "firstName": "Иван",
+    "patronymic": "Иванович",
+    "lastName": "Иванов",
+    "pensionerInfo": {
+      "num": "123456",
+      "numDossier": "D789012",
+      "pinRecipient": "12345678901234",
+      "pinBreadwinner": null,
+      "dateTo": "2023-10-27",
+      "dateFrom": "2010-05-20",
+      "categoryPension": "По возрасту",
+      "status": "Назначено",
+      "PIN2": "43210987654321"
+    }
+  },
+  {
+    "uuid": "fedcba09-8765-4321-fedc-ba0987654321",
+    "date": "2023-10-28",
+    "pin": "43210987654321",
+    "fio": "Петров Петр Петрович",
+    "firstName": "Петр",
+    "patronymic": "Петрович",
+    "lastName": "Петров",
+    "pensionerInfo": {
+      "num": "654321",
+      "numDossier": "D210987",
+      "pinRecipient": "43210987654321",
+      "pinBreadwinner": "11223344556677",
+      "dateTo": "2023-10-28",
+      "dateFrom": "2012-03-15",
+      "categoryPension": "По потере кормильца",
+      "status": "Назначено",
+      "PIN2": "12345678901234"
+    }
+  }
+]
