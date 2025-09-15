@@ -1,0 +1,40 @@
+{
+  "priority": 1,
+  "request": {
+    "method": "GET",
+    "urlPath": "/api/internal/v1/asb_address",
+    "queryParameters": {
+      "pin": {
+        "equalTo": "11111111111111"
+      }
+    }
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "application/json; charset=UTF-8"
+    },
+    "jsonBody": {
+      "addressArray": [
+        {
+          "countryId": 1,
+          "regionId": 2,
+          "districtId": 3,
+          "cityId": 4,
+          "streetId": 5,
+          "houseTxt": "101",
+          "flatTxt": "1A",
+          "code": "ADR001",
+          "post": "720000"
+        }
+      ],
+      "error": false,
+      "address": "г. Бишкек, ул. Киевская, 101, кв. 1А",
+      "description": "Успешно",
+      "dateCreated": "{{now}}"
+    },
+    "transformers": [
+      "response-template"
+    ]
+  }
+}

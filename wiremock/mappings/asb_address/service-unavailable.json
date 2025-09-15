@@ -1,0 +1,23 @@
+{
+  "priority": 10,
+  "request": {
+    "method": "GET",
+    "urlPath": "/api/internal/v1/asb_address"
+  },
+  "response": {
+    "status": 503,
+    "headers": {
+      "Content-Type": "application/json; charset=UTF-8"
+    },
+    "jsonBody": {
+      "addressArray": [],
+      "error": true,
+      "address": null,
+      "description": "Сервис временно недоступен",
+      "dateCreated": "{{now}}"
+    },
+    "transformers": [
+      "response-template"
+    ]
+  }
+}
