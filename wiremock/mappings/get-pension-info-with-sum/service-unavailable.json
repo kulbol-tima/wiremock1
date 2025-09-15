@@ -2,7 +2,7 @@
   "priority": 10,
   "request": {
     "method": "GET",
-    "urlPath": "/api/internal/v1/passport-data-by-psn"
+    "urlPath": "/api/internal/v1/get-pension-info-with-sum"
   },
   "response": {
     "status": 503,
@@ -10,8 +10,8 @@
       "Content-Type": "application/json; charset=UTF-8"
     },
     "jsonBody": {
-      "code": "SERVICE_UNAVAILABLE",
-      "message": "Сервис временно недоступен"
+      "state": "Сервис временно недоступен",
+      "pensionerInfo": []
     }
   }
 }

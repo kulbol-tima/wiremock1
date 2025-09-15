@@ -2,7 +2,7 @@
   "priority": 1,
   "request": {
     "method": "GET",
-    "urlPath": "/api/internal/v1/get-pension-info",
+    "urlPath": "/api/internal/v1/get-pension-info-with-sum",
     "queryParameters": {
       "pin": {
         "equalTo": "33333333333333"
@@ -15,8 +15,8 @@
       "Content-Type": "application/json; charset=UTF-8"
     },
     "jsonBody": {
-      "ok": "OK",
       "date": "{{now}}",
+      "state": "OK",
       "pin": "{{request.query.pin}}",
       "lastName": "Непенсионеров",
       "firstName": "Сидор",

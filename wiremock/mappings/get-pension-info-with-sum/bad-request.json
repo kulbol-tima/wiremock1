@@ -2,9 +2,9 @@
   "priority": 5,
   "request": {
     "method": "GET",
-    "urlPath": "/api/internal/v1/search-all-by-prop-code",
+    "urlPath": "/api/internal/v1/get-pension-info-with-sum",
     "queryParameters": {
-      "propCode": {
+      "pin": {
         "absent": true
       }
     }
@@ -15,8 +15,8 @@
       "Content-Type": "application/json; charset=UTF-8"
     },
     "jsonBody": {
-      "code": "BAD_REQUEST",
-      "message": "Параметр 'propCode' является обязательным"
+      "state": "Параметр 'pin' является обязательным",
+      "pensionerInfo": []
     }
   }
 }
