@@ -1,0 +1,42 @@
+{
+  "priority": 1,
+  "request": {
+    "method": "GET",
+    "urlPath": "/api/internal/v1/get-pension-info",
+    "queryParameters": {
+      "pin": {
+        "equalTo": "11111111111111"
+      }
+    }
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "application/json; charset=UTF-8"
+    },
+    "jsonBody": {
+      "ok": "OK",
+      "date": "{{now}}",
+      "pin": "{{request.query.pin}}",
+      "lastName": "Пенсионеров",
+      "firstName": "Петр",
+      "patronymic": "Иванович",
+      "issueDate": "{{now}}",
+      "pensionerInfo": [
+        {
+          "aop": "АОП1",
+          "numDossier": "D123",
+          "pinRecipient": "{{request.query.pin}}",
+          "pinPayer": "123456789000",
+          "dateTo": "2099-12-31",
+          "categoryPension": "По возрасту",
+          "dateFrom": "2020-01-01",
+          "pin": "{{request.query.pin}}"
+        }
+      ]
+    },
+    "transformers": [
+      "response-template"
+    ]
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "priority": 1,
+  "request": {
+    "method": "GET",
+    "urlPath": "/api/internal/v1/get-patents-by-pin",
+    "queryParameters": {
+      "pin": {
+        "equalTo": "22222222222222"
+      }
+    }
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "application/json; charset=UTF-8"
+    },
+    "jsonBody": [
+      {
+        "id": 201,
+        "createDate": "2022-05-20T11:00:00",
+        "pin": "{{request.query.pin}}",
+        "tin": "{{request.query.pin}}",
+        "objectAddress": "г. Ош, ул. Ленина, 50",
+        "finalAmount": 7500,
+        "isArenda": true,
+        "isFinalAmount": true,
+        "parentId": 0,
+        "isArendaAmount": true
+      },
+      {
+        "id": 202,
+        "createDate": "2023-03-15T15:30:00",
+        "dateTo": "2024-03-14T23:59:59",
+        "statusId": 1,
+        "policyCost": "1200.00",
+        "tin": "{{request.query.pin}}"
+      }
+    ],
+    "transformers": [
+      "response-template"
+    ]
+  }
+}

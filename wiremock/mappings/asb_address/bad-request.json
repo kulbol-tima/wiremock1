@@ -1,0 +1,28 @@
+{
+  "priority": 5,
+  "request": {
+    "method": "GET",
+    "urlPath": "/api/internal/v1/asb_address",
+    "queryParameters": {
+      "pin": {
+        "absent": true
+      }
+    }
+  },
+  "response": {
+    "status": 400,
+    "headers": {
+      "Content-Type": "application/json; charset=UTF-8"
+    },
+    "jsonBody": {
+      "addressArray": [],
+      "error": true,
+      "address": null,
+      "description": "Параметр 'pin' является обязательным",
+      "dateCreated": "{{now}}"
+    },
+    "transformers": [
+      "response-template"
+    ]
+  }
+}

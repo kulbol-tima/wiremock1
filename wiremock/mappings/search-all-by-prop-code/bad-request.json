@@ -2,9 +2,9 @@
   "priority": 5,
   "request": {
     "method": "GET",
-    "urlPath": "/api/internal/v1/get-work-period-info",
+    "urlPath": "/api/internal/v1/search-all-by-prop-code",
     "queryParameters": {
-      "lastMonths": {
+      "propCode": {
         "absent": true
       }
     }
@@ -15,8 +15,8 @@
       "Content-Type": "application/json; charset=UTF-8"
     },
     "jsonBody": {
-      "status": "Параметр 'lastMonths' является обязательным",
-      "workPeriods": []
+      "code": "BAD_REQUEST",
+      "message": "Параметр 'propCode' является обязательным"
     }
   }
 }

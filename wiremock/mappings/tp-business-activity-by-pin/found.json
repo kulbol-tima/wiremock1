@@ -1,0 +1,30 @@
+{
+  "priority": 1,
+  "request": {
+    "method": "GET",
+    "urlPath": "/api/internal/v1/tp-business-activity-by-pin",
+    "queryParameters": {
+      "pin": {
+        "equalTo": "11111111111111"
+      }
+    }
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "application/json; charset=UTF-8"
+    },
+    "jsonBody": {
+      "Farm": "Крестьянское хозяйство 'Агро'",
+      "FullName": "Иванов Иван Иванович",
+      "RayonCode": "003",
+      "RayonName": "Свердловский р-н",
+      "TaxActiveDate": "2022-08-09T00:00:00",
+      "TaxTypeCode": "1020",
+      "TIN": "{{request.query.pin}}"
+    },
+    "transformers": [
+      "response-template"
+    ]
+  }
+}

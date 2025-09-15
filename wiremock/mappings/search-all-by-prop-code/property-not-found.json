@@ -1,0 +1,28 @@
+{
+  "priority": 1,
+  "request": {
+    "method": "GET",
+    "urlPath": "/api/internal/v1/search-all-by-prop-code",
+    "queryParameters": {
+      "propCode": {
+        "equalTo": "PROP999"
+      }
+    }
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "application/json; charset=UTF-8"
+    },
+    "jsonBody": {
+      "materialsten": null,
+      "ploshad_stroenia": null,
+      "ploshad_zem_uchastka": null,
+      "vid_zem_uchastka": null,
+      "god_postroiki": null,
+      "formaobstvenosti": null,
+      "document_prava": null,
+      "formaIspolzovania": null
+    }
+  }
+}

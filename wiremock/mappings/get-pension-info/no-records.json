@@ -2,7 +2,7 @@
   "priority": 1,
   "request": {
     "method": "GET",
-    "urlPath": "/api/internal/v1/get-work-period-info",
+    "urlPath": "/api/internal/v1/get-pension-info",
     "queryParameters": {
       "pin": {
         "equalTo": "33333333333333"
@@ -15,13 +15,14 @@
       "Content-Type": "application/json; charset=UTF-8"
     },
     "jsonBody": {
-      "status": "OK",
+      "ok": "OK",
+      "date": "{{now}}",
       "pin": "{{request.query.pin}}",
+      "lastName": "Непенсионеров",
       "firstName": "Сидор",
-      "lastName": "Сидоров",
       "patronymic": "Сидорович",
       "issueDate": "{{now}}",
-      "workPeriods": []
+      "pensionerInfo": []
     },
     "transformers": [
       "response-template"
