@@ -1,0 +1,27 @@
+{
+  "priority": 5,
+  "request": {
+    "method": "POST",
+    "urlPath": "/person-test-data/create",
+    "bodyPatterns": [
+      {
+        "matchesJsonPath": "$.id",
+        "equalTo": "family-5"
+      }
+    ]
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "application/json; charset=UTF-8"
+    },
+    "jsonBody": {
+      "createDateTime": "2025-10-03T00:00:00Z",
+      "message": "Данные тестового пользователя family-5 успешно созданы",
+      "status": "OK"
+    },
+    "transformers": [
+      "response-template"
+    ]
+  }
+}
