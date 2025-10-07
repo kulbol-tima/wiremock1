@@ -2,9 +2,9 @@
   "priority": 1,
   "request": {
     "method": "GET",
-    "urlPath": "/api/internal/v1/vehicles/by-pin",
+    "urlPath": "/api/internal/v1/sits/animal-tracking",
     "queryParameters": {
-      "pin": {
+      "gostinica": {
         "absent": true
       }
     }
@@ -15,9 +15,11 @@
       "Content-Type": "application/json; charset=UTF-8"
     },
     "jsonBody": {
-      "status": "Параметр 'pin' является обязательным",
-      "transports": [],
-      "totalCount": 0
+      "isSuccess": false,
+      "message": "Параметр 'gostinica' (ИНН) является обязательным",
+      "totalCount": 0,
+      "INN": null,
+      "response": []
     }
   }
 }

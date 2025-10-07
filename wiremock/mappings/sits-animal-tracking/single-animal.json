@@ -1,0 +1,38 @@
+{
+  "priority": 5,
+  "request": {
+    "method": "GET",
+    "urlPath": "/api/internal/v1/sits/animal-tracking",
+    "queryParameters": {
+      "gostinica": {
+        "equalTo": "11111111111111"
+      }
+    }
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "application/json; charset=UTF-8"
+    },
+    "jsonBody": {
+      "isSuccess": true,
+      "message": "OK",
+      "totalCount": 1,
+      "INN": "{{request.query.gostinica}}",
+      "response": [
+        {
+          "item": [
+            {
+              "type": "КРС",
+              "Name": "Бурёнка",
+              "Age": "3"
+            }
+          ]
+        }
+      ]
+    },
+    "transformers": [
+      "response-template"
+    ]
+  }
+}
