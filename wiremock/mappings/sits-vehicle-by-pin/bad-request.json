@@ -1,0 +1,23 @@
+{
+  "priority": 1,
+  "request": {
+    "method": "GET",
+    "urlPath": "/api/internal/v1/sits/vehicle/by-pin",
+    "queryParameters": {
+      "pin": {
+        "absent": true
+      }
+    }
+  },
+  "response": {
+    "status": 400,
+    "headers": {
+      "Content-Type": "application/json; charset=UTF-8"
+    },
+    "jsonBody": {
+      "isSuccess": false,
+      "message": "Параметр 'pin' является обязательным",
+      "response": []
+    }
+  }
+}

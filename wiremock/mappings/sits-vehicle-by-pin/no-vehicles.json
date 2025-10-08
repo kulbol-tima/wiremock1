@@ -1,0 +1,23 @@
+{
+  "priority": 5,
+  "request": {
+    "method": "GET",
+    "urlPath": "/api/internal/v1/sits/vehicle/by-pin",
+    "queryParameters": {
+      "pin": {
+        "equalTo": "33333333333333"
+      }
+    }
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "application/json; charset=UTF-8"
+    },
+    "jsonBody": {
+      "isSuccess": true,
+      "message": "OK",
+      "response": []
+    }
+  }
+}

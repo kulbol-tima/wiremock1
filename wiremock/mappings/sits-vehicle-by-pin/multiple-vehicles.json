@@ -1,0 +1,38 @@
+{
+  "priority": 5,
+  "request": {
+    "method": "GET",
+    "urlPath": "/api/internal/v1/sits/vehicle/by-pin",
+    "queryParameters": {
+      "pin": {
+        "equalTo": "22222222222222"
+      }
+    }
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "application/json; charset=UTF-8"
+    },
+    "jsonBody": {
+      "isSuccess": true,
+      "message": "OK",
+      "response": [
+        {
+          "item": {
+            "govNumber": "01KG456DEF",
+            "issueDate": "2021-05-20",
+            "model": "Honda CR-V"
+          }
+        },
+        {
+          "item": {
+            "govNumber": "01KG789GHI",
+            "issueDate": "2020-11-11",
+            "model": "Mercedes-Benz Sprinter"
+          }
+        }
+      ]
+    }
+  }
+}

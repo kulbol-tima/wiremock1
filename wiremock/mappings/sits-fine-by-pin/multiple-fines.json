@@ -1,0 +1,43 @@
+{
+  "priority": 5,
+  "request": {
+    "method": "GET",
+    "urlPath": "/api/internal/v1/sits/fine/by-pin",
+    "queryParameters": {
+      "pin": {
+        "equalTo": "22222222222222"
+      }
+    }
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "application/json; charset=UTF-8"
+    },
+    "jsonBody": {
+      "isSuccess": true,
+      "message": "OK",
+      "totalCount": 2,
+      "response": [
+        {
+          "item": [
+            {
+              "protocol_number": "PN987654",
+              "decision_date": "2023-08-15",
+              "article_name": "Неправильная парковка",
+              "decision_number": "DN123789",
+              "amount": "1000.00"
+            },
+            {
+              "protocol_number": "PN555444",
+              "decision_date": "2023-07-20",
+              "article_name": "Проезд на красный свет",
+              "decision_number": "DN333222",
+              "amount": "3000.00"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

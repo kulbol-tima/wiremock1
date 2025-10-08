@@ -2,9 +2,9 @@
   "priority": 5,
   "request": {
     "method": "GET",
-    "urlPath": "/api/internal/v1/sits/animal-tracking",
+    "urlPath": "/api/internal/v1/sits/fine/by-pin",
     "queryParameters": {
-      "gostinica": {
+      "pin": {
         "equalTo": "33333333333333"
       }
     }
@@ -18,11 +18,7 @@
       "isSuccess": true,
       "message": "OK",
       "totalCount": 0,
-      "INN": "{{request.query.gostinica}}",
       "response": []
-    },
-    "transformers": [
-      "response-template"
-    ]
+    }
   }
 }
