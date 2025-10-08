@@ -1,0 +1,35 @@
+{
+  "priority": 5,
+  "request": {
+    "method": "GET",
+    "urlPath": "/api/internal/v1/veteran/another-state-reference",
+    "queryParameters": {
+      "prikolot": {
+        "equalTo": "11111111111111"
+      }
+    }
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "application/json; charset=UTF-8"
+    },
+    "jsonBody": {
+      "responseResult": true,
+      "errorMessage": null,
+      "surname": "Ветеранов",
+      "name": "Иван",
+      "patronymic": "Иванович",
+      "birthDate": "1940-05-09",
+      "from": "СССР",
+      "anotherStateMilitaryAction": {
+        "endDate": "1989-02-15",
+        "category": "Военнослужащий",
+        "territorygot": "Афганистан"
+      },
+      "militaryIdSeries": "АВ",
+      "militaryIdNumber": "123456",
+      "veteranAward": "Орден Красной Звезды"
+    }
+  }
+}

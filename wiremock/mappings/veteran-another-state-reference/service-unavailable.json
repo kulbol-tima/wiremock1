@@ -1,0 +1,22 @@
+{
+  "priority": 1,
+  "request": {
+    "method": "GET",
+    "urlPath": "/api/internal/v1/veteran/another-state-reference",
+    "headers": {
+      "X-Mock-Scenario": {
+        "equalTo": "503"
+      }
+    }
+  },
+  "response": {
+    "status": 503,
+    "headers": {
+      "Content-Type": "application/json; charset=UTF-8"
+    },
+    "jsonBody": {
+      "responseResult": false,
+      "errorMessage": "Сервис временно недоступен"
+    }
+  }
+}
