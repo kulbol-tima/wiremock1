@@ -1,0 +1,46 @@
+{
+  "scenarioName": "Great-Patriotic-War",
+  "requiredScenarioState": "Started",
+  "newScenarioState": "found",
+  "request": {
+    "method": "GET",
+    "urlPath": "/api/internal/v1/veteran/reference-great-patriotic-war",
+    "queryParameters": {
+      "prikolot": {
+        "equalTo": "23456789012345"
+      }
+    }
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "application/json;charset=UTF-8"
+    },
+    "jsonBody": {
+      "pin": "23456789012345",
+      "surname": "Сидоров",
+      "name": "Сидор",
+      "middleName": "Сидорович",
+      "fileNumber": "V-54321",
+      "orderNum": "456-B",
+      "vetMilitaryAction": [
+        {
+          "region": "Восточный фронт",
+          "beginDate": "1942-01-01",
+          "endDate": "1945-05-09",
+          "commander": "Жуков Г.К.",
+          "commanderDol": "Маршал Советского Союза",
+          "placeWar": "Берлин",
+          "positionWar": "Стрелок",
+          "category": "Участник ВОВ"
+        }
+      ],
+      "veteranAwards": [
+        {
+          "warDocument": "Орден Отечественной войны",
+          "warNumDoc": "N-98765"
+        }
+      ]
+    }
+  }
+}
