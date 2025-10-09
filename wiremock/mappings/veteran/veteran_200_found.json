@@ -1,0 +1,54 @@
+{
+  "scenarioName": "Chernobyl-reference",
+  "requiredScenarioState": "Started",
+  "newScenarioState": "found",
+  "request": {
+    "method": "GET",
+    "urlPath": "/api/internal/v1/veteran/Chernobyl-reference",
+    "queryParameters": {
+      "prikolot": {
+        "equalTo": "12345678901234"
+      }
+    }
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "application/json;charset=UTF-8"
+    },
+    "jsonBody": {
+      "responseResult": true,
+      "chernobylReference": {
+        "pin": "12345678901234",
+        "surname": "Иванов",
+        "name": "Иван",
+        "middleName": "Иванович",
+        "militarySeries": "АВ",
+        "militaryNumber": "123456",
+        "fileNumber": "F-12345",
+        "issueDate": "1986-05-10",
+        "orderNum": "123-A",
+        "invalidDate": "1990-01-15",
+        "vetmilitaryactions": [
+          {
+            "region": "Чернобыльская АЭС",
+            "beginDate": "1986-04-26",
+            "endDate": "1986-10-30",
+            "commander": "Петров П.П.",
+            "commanderDol": "Командир части",
+            "placeWar": "г. Припять",
+            "positionWar": "Ликвидатор",
+            "positionWarRu": "Ликвидатор"
+          }
+        ],
+        "veteranwards": [
+          {
+            "warDocument": "Орден Мужества",
+            "warNumDoc": "N-54321"
+          }
+        ]
+      },
+      "error": null
+    }
+  }
+}

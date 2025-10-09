@@ -1,0 +1,29 @@
+{
+  "scenarioName": "Chernobyl-reference",
+  "requiredScenarioState": "Started",
+  "newScenarioState": "not-found",
+  "request": {
+    "method": "GET",
+    "urlPath": "/api/internal/v1/veteran/Chernobyl-reference",
+    "queryParameters": {
+      "prikolot": {
+        "matches": "[0-9]{14}"
+      }
+    }
+  },
+  "priority": 10,
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "application/json;charset=UTF-8"
+    },
+    "jsonBody": {
+      "responseResult": false,
+      "chernobylReference": null,
+      "error": {
+        "errorCode": "PARTICIPANT_NOT_FOUND",
+        "errorMessage": "Участник с указанным ПИН не найден"
+      }
+    }
+  }
+}

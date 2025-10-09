@@ -1,0 +1,23 @@
+{
+  "scenarioName": "Chernobyl-reference",
+  "requiredScenarioState": "Started",
+  "newScenarioState": "bad-request",
+  "request": {
+    "method": "GET",
+    "urlPath": "/api/internal/v1/veteran/Chernobyl-reference",
+    "queryParameters": {
+      "prikolot": {
+        "absent": true
+      }
+    }
+  },
+  "response": {
+    "status": 400,
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "jsonBody": {
+      "message": "Bad Request: prikolot parameter is missing"
+    }
+  }
+}
